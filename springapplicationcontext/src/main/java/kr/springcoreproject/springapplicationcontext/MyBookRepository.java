@@ -2,6 +2,6 @@ package kr.springcoreproject.springapplicationcontext;
 
 import org.springframework.stereotype.Repository;
 
-
-public interface BookRepository {
+@Repository
+public class MyBookRepository implements BookRepository{
 }
