@@ -9,6 +9,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -41,7 +43,7 @@ public class AppRunner implements ApplicationRunner {
 //    MessageSource messageSource;
 
     @Autowired
-    ResourceLoader resourceLoader;
+    ApplicationContext resourceLoader;
 
 
     @Override
@@ -77,11 +79,15 @@ public class AppRunner implements ApplicationRunner {
 //        }
 //        System.out.println(messageSource.getClass());
 //        publishEvent.publishEvent(new MyEvent(this,100));
-
-        Resource resource = resourceLoader.getResource("classpath:test.txt");
-        System.out.println(resource.exists());
-        System.out.println(resource.getDescription());
-        System.out.println(Files.readString(Path.of(resource.getURI())));
+//        ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("configLocation.xml");
+//        ApplicationContext fileSystemXml = new FileSystemXmlApplicationContext("configLocation.xml");
+        System.out.println("ApplicationContext = " + resourceLoader.getClass());
+//        Resource resource = resourceLoader.getResource("classpath:test.txt");
+        Resource resource = resourceLoader.getResource("test.txt");
+        System.out.println("Resource = "+ resource.getClass());
+        System.out.println("resource.exists=" + resource.exists());
+        System.out.println("resource.getDescription = " + resource.getDescription());
+        System.out.println("Files.readString(Path.of(resource.getURI())) = " + Files.readString(Path.of(resource.getURI())));
 
     }
 }
