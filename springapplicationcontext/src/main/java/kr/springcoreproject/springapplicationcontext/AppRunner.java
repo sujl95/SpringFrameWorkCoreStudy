@@ -46,14 +46,14 @@ public class AppRunner implements ApplicationRunner {
 //    @Autowired
 //    MessageSource messageSource;
 
-    @Autowired
-    ApplicationContext resourceLoader;
-
-    @Autowired
-    Validator validator;
-
-    @Autowired
-    LocalValidatorFactoryBean validator1;
+//    @Autowired
+//    ApplicationContext resourceLoader;
+//
+//    @Autowired
+//    Validator validator;
+//
+//    @Autowired
+//    LocalValidatorFactoryBean validator1;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -99,39 +99,39 @@ public class AppRunner implements ApplicationRunner {
 //        System.out.println("Files.readString(Path.of(resource.getURI())) = " + Files.readString(Path.of(resource.getURI())));
 
         //어떤 validator가 출력되는지 실행
-        System.out.println(validator.getClass());
+//        System.out.println(validator.getClass());
 //        System.out.println(validator1.getClass());
 
 
 //        // Event 객체 생성하고 에러를 고의적으로 내기 위해 값을 넣지 않는다
 //        Event event = new Event();
 
-        Event event = new Event();
-        event.setLimit(-1);
-        event.setEmail("asdf");
+//        Event event = new Event();
+//        event.setLimit(-1);
+//        event.setEmail("asdf");
 
 
-        // EventValidator 객체를 생성
-        EventValidator eventValidator = new EventValidator();
-
-        // 검증할 Event 객체를 전달하여 Errors 인스턴스를 생성한다
-        // BeanPropertyBindingResult 기본 구현체로 사용한다
-        // Spring MVC에서 자동으로 생성해주고 실질적으로 직접 사용하지는 않는다.
-       Errors errors = new BeanPropertyBindingResult(event, "event");
-
-        // event 객체를 검사한다
-//        eventValidator.validate(event, errors);
-
-        validator.validate(event, errors);
-
-        // errors에 error 가 있는지 확인한다
-        System.out.println("errors.hasErrors() = "+errors.hasErrors());
-        // forEach로 에러코드와 기본 메세지 출력
-        errors.getAllErrors().forEach( e-> {
-            System.out.println("----error code-----");
-            Arrays.stream(e.getCodes()).forEach(System.out::println);
-            System.out.println("e.getDefaultMessage() = " + e.getDefaultMessage());
-        });
+//        // EventValidator 객체를 생성
+//        EventValidator eventValidator = new EventValidator();
+//
+//        // 검증할 Event 객체를 전달하여 Errors 인스턴스를 생성한다
+//        // BeanPropertyBindingResult 기본 구현체로 사용한다
+//        // Spring MVC에서 자동으로 생성해주고 실질적으로 직접 사용하지는 않는다.
+//       Errors errors = new BeanPropertyBindingResult(event, "event");
+//
+//        // event 객체를 검사한다
+////        eventValidator.validate(event, errors);
+//
+//        validator.validate(event, errors);
+//
+//        // errors에 error 가 있는지 확인한다
+//        System.out.println("errors.hasErrors() = "+errors.hasErrors());
+//        // forEach로 에러코드와 기본 메세지 출력
+//        errors.getAllErrors().forEach( e-> {
+//            System.out.println("----error code-----");
+//            Arrays.stream(e.getCodes()).forEach(System.out::println);
+//            System.out.println("e.getDefaultMessage() = " + e.getDefaultMessage());
+//        });
 
 
 
