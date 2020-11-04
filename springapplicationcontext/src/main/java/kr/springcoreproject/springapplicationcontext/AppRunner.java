@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -54,6 +55,9 @@ public class AppRunner implements ApplicationRunner {
 //
 //    @Autowired
 //    LocalValidatorFactoryBean validator1;
+
+    @Autowired
+    ConversionService conversionService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -134,8 +138,9 @@ public class AppRunner implements ApplicationRunner {
 //        });
 
 
+//        System.out.println("conversionService.getClass() = "+conversionService.getClass().toString());
 
-
+        System.out.println(conversionService);
 
         //test
     }
