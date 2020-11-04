@@ -88,6 +88,6 @@ public class AppRunner implements ApplicationRunner {
         System.out.println("resource.exists=" + resource.exists());
         System.out.println("resource.getDescription = " + resource.getDescription());
         System.out.println("Files.readString(Path.of(resource.getURI())) = " + Files.readString(Path.of(resource.getURI())));
-
+        //test
     }
 }
