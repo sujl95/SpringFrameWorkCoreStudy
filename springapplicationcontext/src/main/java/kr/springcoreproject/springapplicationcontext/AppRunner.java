@@ -1,6 +1,6 @@
 package kr.springcoreproject.springapplicationcontext;
 
-import kr.springcoreproject.springapplicationcontext.AOP.EventService;
+import kr.springcoreproject.springapplicationcontext.NullSafety.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -160,9 +160,10 @@ public class AppRunner implements ApplicationRunner {
 //        Integer value = expression.getValue(Integer.class);
 //        System.out.println(value);
 
-        eventService.createEvent();
-        eventService.publishEvent();
-        eventService.deleteEvent();
+//        eventService.createEvent();
+//        eventService.publishEvent();
+//        eventService.deleteEvent();
 
+        String msg = eventService.createEvent(null);
     }
 }
