@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -20,7 +21,7 @@ import java.util.function.Supplier;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication
-@EnableAsync
+//@EnableAsync
 //@PropertySource("classpath:/app.properties")
 public class DemoApplication {
 
@@ -36,6 +37,11 @@ public class DemoApplication {
 //        });
 //        app.run(args);
         //2
+
+        //WebApplication을 안띄우고 java main 메서드로 실행하듯이 서버모드로 실행안한다
+//        SpringApplication app = new SpringApplication(DemoApplication.class);
+//        app.setWebApplicationType(WebApplicationType.NONE);
+//        app.run(args);
         SpringApplication.run(DemoApplication.class, args);
     }
 
