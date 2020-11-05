@@ -15,6 +15,10 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
@@ -56,8 +60,29 @@ public class AppRunner implements ApplicationRunner {
 //    @Autowired
 //    LocalValidatorFactoryBean validator1;
 
-    @Autowired
-    ConversionService conversionService;
+//    @Autowired
+//    ConversionService conversionService;
+
+    @Value("#{ 2 + 2}")
+    int value;
+
+    @Value("#{'hello ' + 'world'}")
+    String greeting;
+
+    @Value("#{'TheWing '+ 'Tistory Blog'}")
+    String TheWing;
+
+    @Value("#{1 eq 1}")
+    boolean trueOrFalse;
+
+    @Value("${my.value}")
+    int myValue;
+
+    @Value("#{${my.value} eq 100}")
+    boolean isMyValue100;
+
+    @Value("#{sample.data}")
+    int sampleData;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -140,8 +165,20 @@ public class AppRunner implements ApplicationRunner {
 
 //        System.out.println("conversionService.getClass() = "+conversionService.getClass().toString());
 
-        System.out.println(conversionService);
+//        System.out.println(conversionService);
 
-        //test
+
+//        System.out.println("================");
+//        System.out.println("value = " + value);
+//        System.out.println("greeting = " + greeting);
+//        System.out.println("TheWing = " + TheWing);
+//        System.out.println("trueOrFalse = " + trueOrFalse);
+        System.out.println("myValue = " + myValue);
+        System.out.println("isMyValue100 = " + isMyValue100);
+
+        ExpressionParser parser = new SpelExpressionParser();
+        Expression expression = parser.parseExpression("100 + 200");
+        Integer value = expression.getValue(Integer.class);
+        System.out.println(value);
     }
 }
